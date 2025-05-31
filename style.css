@@ -1,0 +1,1110 @@
+/* Dylan De Silva */
+/* 10660225 */
+/* 30/05/2025*/
+
+
+/* =============== */
+/* Global Styles   */
+/* =============== */
+
+/* In this section, I setup the base styles which are applied to the entire website. This make sures it has consistency and resetting the browser defaults.
+By using CSS to reset, it helps to cross-browser inconsistencies. I learned this after i notice the margin issue in chrome and Firefox. */
+
+* {
+    /* The default margins are reset, padding as well as set box-sizing in-order to include the padding or borders in the element width  calculation.
+       I chose the border-box for predictable sizing to simplify the layout calculations across sections. */
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    /* A light grey background is used as it is clean and gives a modern look with dark text for readability. */
+    background-color: #f8f9fa;
+    color: #333;
+    /* Used the Arial as the fallback sans-serif font which is used for the compatibility and clarity.
+       At beginning, I tried custom fonts  and later sticked with Arial for the performance and it's availability. */
+    font-family: Arial, sans-serif;
+    /* I set the line-height for 1.6 for text readability. specially in paragraphs. */
+    line-height: 1.6;
+}
+
+/* ==================== */
+/* Common Elements       */
+/* Used it across all of the pages  */
+/* ====================== */
+/* In this section the elements are styled. the elements like the links and the lists which appears on multiple pages make sures a compatible design.
+   The styles are centralized, in-order to reduce the redundancy, and make the updates much more easier. */
+
+/* Links ----*/
+a {
+    /* set blue color for the links in-order to make the links stand out against the background color.
+       chose the color #0066cc for high contrast */
+    color: #0066cc;
+    /* added a smooth color transition to hover the effects in-order to improve the interactivity of the website. */
+    transition: color 0.3s ease;
+}
+
+a:hover {
+    /* I changed the color of the link to blue to match the sites color because when hovering it showed as orange color which made the letters not visible. */
+    color: #004080;
+}
+
+a:focus {
+    /* I added a dashed outline for accessibility due to when the links are focused using the keyboard navigation. 
+       Discovered that the outline-offset manages to improve the visibility without affecting the original layout. */
+    outline: 2px dashed #004080;
+    outline-offset: 2px;
+}
+
+/* Lists */
+ul {
+    /* Set the margins and the padding to allign the unordered lists with the content's flow. */
+    margin: 10px 0 20px 25px;
+    padding-left: 10px;
+}
+
+ul li {
+    /* Add spacing between list items for better readability. 
+    Small margins prevent having cramped text and it  improves the visual hierarchy. */
+    margin: 5px 0;
+}
+
+/* =================*/
+/* Header Section   */
+/* Used in all pages  */
+/* ================== */
+
+/* Style the header. This includes the page title and description and the websites navigation.
+   I Used a semi-transparent overlay which means a box-shadow, to make the text to be readable over background images. */
+
+header {
+    /* Set transparent background.This allows the background images to be disolayed through it. */
+    background-color: transparent;
+    /* Centerd and scaled the background images to obtaine a  full-width, immersive effect. 
+       Background-size: cover , makesures the images to be  filled with the header without distortion. */
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    /* Round bottom corners for a smooth transition to the main content. */
+    border-radius: 0 0 20px 20px;
+    /* Applied a dark overlay in order to improve the text contrast against the background images. */
+    box-shadow: inset 0 0 0 1000px rgba(0, 0, 0, 0.5);
+    /* Used a White text for high contrast against the dark overlay. */
+    color: white;
+    /* Used flexbox in-order to vertically center the content within the header part.*/
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    /* Makesure that the  header is tall enough. so, the content and images can be  displaied effectively. */
+    min-height: 400px;
+    /* Added a padding for content spacing, and adjusting for smaller screens later. */
+    padding: 60px 20px;
+    /* For possible absolute-positioned items, use the position relative (not used here). */
+    position: relative;
+    /* Centered the text to have a balanced, professional appearance. */
+    text-align: center;
+}
+
+header h1 {
+    /* I used large, bold headings for prominence.
+    Also, 2.5em used to ensure the visibility without changing the design.  */
+    font-size: 2.5em;
+    font-weight: bold;
+    /* To seperate the heading from the description, i used space below heading.  */
+    margin-bottom: 15px;
+    /*  I added subtle shadow for depth, very specially over varied backgrounds */
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
+}
+
+header p {
+    /* Used a slightly larger font for the description so it can maintain hierarchy. */
+    font-size: 1.2em;
+    /* For readability on large displays, I centered and limit the width. */
+    margin: 0 auto;
+    max-width: 600px;
+}
+
+.header-banner {
+    /* Style for banner images (not used in current HTML but included for flexibility). */
+    border-bottom: 4px solid #ffffff;
+    border-radius: 0 0 12px 12px;
+    max-height: 250px;
+    object-fit: cover;
+    width: 100%;
+}
+
+/* Navigation Menu */
+nav ul {
+    /* To contrast with the header, i used dark blue background for navigation. 
+     I choose #003366 for a professional, trustworthy feel. */
+    background-color: #003366;
+    /*  i used flexbox for horizontal menu with wrapping for smaller screens. */
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    /* For a clean menu, i removed default list styling. */
+    list-style: none;
+    /* For spacing around menu items, i used padding. */
+    padding: 10px 0;
+}
+
+nav ul li {
+    /*  For clarity, i put space between menu items */
+    margin: 0 15px;
+}
+
+nav ul li a {
+    /* Round corners is used to have  a modern button-like appearance. */
+    border-radius: 5px;
+    /* For contrast against the dark nav background, i used white text  */
+    color: #ffffff;
+    /* For emphasis and readability, i used bold text.  */
+    font-weight: bold;
+    /*  For clickable area and visual balance, i used padding */
+    padding: 8px 12px;
+    /*  For a cleaner look, i removed default underline. */
+    text-decoration: none;
+    /* For hover effects on background and text color, i used smooth transitions . */
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+nav ul li a:hover {
+    /*  In order to match site’s accent color, i used orange background on hover. 
+        Consistent hover state Strengthen brand identity. */
+    background-color: #ff6600;
+    text-decoration: none;
+}
+
+/* ====================== */
+/* The main Content Area  */
+/* Used in all pages  */
+/* ======================*/
+
+/* The main content container which holds all of the page specific sections are styled. 
+   Opting for a gradient background gives the website more depth, but at the same time remains light.*/
+
+main {
+    /* Used a Subtle gradient for a modern, dynamic background. 
+       -Moving from #f8f9fa to #e6f0ff adds more appeal to the background. */
+    background: linear-gradient(180deg, #f8f9fa 0%, #e6f0ff 100%);
+    /* Make the corners of each card gently rounded to help the cards match other areas of your website. */
+    border-radius: 12px;
+    /* made the layout with a centre and width so the page looks good on large screens. */
+    margin: auto;
+    max-width: 1200px;
+    /* used padding for content spacing and adjustable in media queries. */
+    padding: 30px 20px;
+}
+
+main h2 {
+    /* Dark blue is used for titles to match the colours on the site. */
+    color: #004080;
+    /*  Made section titles large to mark the hierarchy within the document. */
+    font-size: 1.8em;
+    /* Placed some space above every heading to keep sections apart. */
+    margin-top: 20px;
+    /* Place all fonts centered on every page. */
+    text-align: center;
+}
+
+main h3 {
+    /* Subheadings are set in a lighter shade of blue so they look different from h2 headings. */
+    color: #0059b3;
+    /* The size of secondary headings set to smaller size */
+    font-size: 1.3em;
+    /* Insert space above to keep this seperated from the content above. */
+    margin-top: 15px;
+    text-align: center;
+}
+
+/* Section Containers */
+section {
+    /*  The content sections are best seen because they are placed on a white background.. */
+    background-color: #ffffff;
+    /* Round the edges to obtain a current, format for cards. */
+    border-radius: 12px;
+    /* use shadow to help the object stand apart from the background. 
+       Shadows give objects different levels in the design without adding too much detail. */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    /*The margin is for spacing between sections. */
+    margin: 20px 0;
+    /* Padding is given for internal content spacing. */
+    padding: 20px;
+}
+
+section p {
+    /* The standard font size for paragraph text. */
+    font-size: 1.1em;
+    /* text is centered and limited width is used for readability. */
+    margin: 10px auto;
+    max-width: 800px;
+    /* Text alignment is set to centred so the page gets even. */
+    text-align: center;
+}
+
+/* =================== */
+/* Index Page Styles   */
+/* =================== */
+/* Styles for index.html, covering featured schools, testimonials and the city grids section.  
+  I used card-based layouts for visual appeal and easy scanning. */
+
+/* Featured Universities Section */
+.featured-universities {
+    /* White background to match other sections. */
+    background-color: #ffffff;
+    /* used round corners for consistency. */
+    border-radius: 12px;
+    /* Use shadow for depth, that matches the other sections. */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    /* Add some small space at the bottom of a page to seperate it from other parts of the document. */
+    margin-bottom: 40px;
+    /* used padding for the content spacing. */
+    padding: 20px;
+}
+
+.uni-grid {
+    /* Flexbox is used for a responsive grid of university cards. 
+       When an element has flex-wrap, cards will wrap onto another line when the screen is smaller, making the site more responsive. */
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+}
+
+.uni-card {
+    /*A light blue background was added to university cards to distinguish them from the sections they are in. */
+    background-color: #f0f7ff;
+    /* Border for subtle definition. */
+    border: 1px solid #ddd;
+    /* Round corners for a modern look. */
+    border-radius: 10px;
+    /* Shadow for depth, matching section style. */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    /* Padding for internal content of the site. */
+    padding: 20px;
+    /* Center text for card content. */
+    text-align: center;
+    /* Allow hover effects to move smoothly. */
+    transition: box-shadow 0.3s ease, transform 0.3s ease;
+    /* I set up a width to allow all cards to be the same size. */
+    width: 300px;
+}
+
+.uni-card:hover {
+    /* Put more shadow and add an elevated card on hover so the user knows the content is clickable.  */
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
+    transform: translateY(-5px);
+}
+
+.uni-card img {
+    /* In order to match card style, i used round corners for images.--------------------------- */
+    border-radius: 8px;
+    /* For consistency across cards, i used fixed height. */
+    height: 150px;
+    /* Space below image for text. */
+    margin-bottom: 10px;
+    /* Guarantee images cover the area without stretching. */
+    object-fit: cover;
+    /* Full width of the card. */
+    width: 100%;
+}
+
+.uni-card h3 {
+    /* Card titles are coloured in dark blue, just like the main h2. */
+    color: #004080;
+    /* For prominence within cards, i used this Size . */
+    font-size: 1.3em;
+    /* Space below title. */
+    margin-bottom: 10px;
+}
+
+.uni-card p {
+    /* this is the standard font size for card descriptions. */
+    font-size: 1em;
+}
+
+/* Testimonials Section */
+.testimonials {
+    /* for consistency, i used white background . */
+    background-color: #ffffff;
+    /* For card-like appearance, i used round corners . */
+    border-radius: 12px;
+    /* For depth, i used shadow. */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    /* For separation, i used extra bottom margin . */
+    margin-bottom: 40px;
+    /* Padding for content. */
+    padding: 20px;
+}
+
+.testimonial-grid {
+    /* for a responsive grid of testimonial cards, i used flexbox . */
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+}
+
+.testimonial-card {
+    /* to differentiate from section, i used light blue background . */
+    background-color: #e6f0ff;
+    /* for definition, i used border . */
+    border: 1px solid #ddd;
+    /* for consistency, i used round corners . */
+    border-radius: 10px;
+    /* for depth, i used shadow . */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    /* for content, i used padding . */
+    padding: 20px;
+    /* for card content, i used center text . */
+    text-align: center;
+    /* for consistent card sizes, i used fixed width . */
+    width: 350px;
+}
+
+.testimonial-card img {
+    /* for a friendly, personal touch, i used circular images . 
+       Creative: Border-radius: 50% improves the human element of testimonial. */
+    border-radius: 50%;
+    height: 60px;
+    margin-bottom: 10px;
+    width: 60px;
+}
+
+.testimonial-card p {
+    /* for quotes, i used standard font size with italic style . */
+    font-size: 1em;
+    font-style: italic;
+    margin-bottom: 10px;
+}
+
+.testimonial-card h4 {
+    /* for names, matching other headings, i used dark blue . */
+    color: #004080;
+    /* for secondary importance, i used smaller size . */
+    font-size: 1.1em;
+}
+
+/* The section of City Grid */
+.city-grid {
+    /* for a responsive grid of city cards, i used Flexbox. */
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    /* Space cards evenly across the row. */
+    justify-content: space-between;
+    margin: 20px 0;
+}
+
+.city-card {
+    /* for city cards, i used white background. */
+    background-color: white;
+    /* for definition, i used border. */
+    border: 1px solid #ddd;
+    /* for consistency, iused round corners. */
+    border-radius: 10px;
+    /* for depth, i used shadow. */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    /* to fit three cards per row, accounting for gaps, i used flexible width. */
+    flex: 1 1 calc(33% - 20px);
+    padding: 20px;
+    text-align: center;
+    /* for hover effects, i used smooth transitions. */
+    transition: box-shadow 0.3s ease, transform 0.3s ease;
+}
+
+.city-card:hover {
+    /* for interactivity. i increased shadow and lift on hover. */
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
+    transform: translateY(-5px);
+}
+
+.city-card h3 {
+    /* for city names, i used this size. */
+    font-size: 1.3em;
+    margin-bottom: 12px;
+}
+
+.city-card p {
+    /* for descriptions, i used standard font size. */
+    font-size: 1em;
+    margin-bottom: 12px;
+}
+
+.city-card img {
+    /* for images, i used round corners. */
+    border-radius: 8px;
+    /* for consistency, i used fixed height. */
+    height: 200px;
+    /* Cover area without stretching. */
+    object-fit: cover;
+    /* for interactivity, i used fade effect on hover. */
+    transition: opacity 0.3s ease;
+    width: 100%;
+}
+
+.city-card img:hover {
+    /* to indicate clickability, i used slight fade on hover. */
+    opacity: 0.9;
+}
+
+/* About Australia Section */
+.about-australia {
+    /* for consistency, i used white background. */
+    background: #ffffff;
+    /* for card-like appearance, i used round corners. */
+    border-radius: 12px;
+    /* for depth, i used shadow. */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    /* for prominence on index page, i used extra margin. */
+    margin: 40px 20px;
+    padding: 20px;
+}
+
+.australia-content {
+    /* for side-by-side image and text, i used flexbox. 
+       Decision: nowrap guarantee layout stays intact on larger screens. */
+    align-items: flex-start;
+    display: flex;
+    flex-wrap: nowrap;
+    gap: 20px;
+    justify-content: center;
+}
+
+.australia-image {
+    /* for the map image, i used round corners. */
+    border-radius: 8px;
+    /* This Prevent image from shrinking in flex container. */
+    flex-shrink: 0;
+    height: auto;
+    /* for balance with text, i used limit width. */
+    max-width: 100%;
+    width: 300px;
+}
+
+.australia-text {
+    /* for readability, i used dark text. */
+    color: #333;
+    /* This Allow text to take remaining space. */
+    flex: 1;
+    /* for content, i used standard font size. */
+    font-size: 1.1em;
+}
+
+/* Australia Video Section */
+.australia-video {
+    /* to match other sections, i used white background. */
+    background: #ffffff;
+    /* for consistency, i used round corners. */
+    border-radius: 12px;
+    /* for depth, i used shadow. */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    /* for prominence, i used extra margin. */
+    margin: 40px 20px;
+    padding: 20px;
+    /* for video and heading, i used center content. */
+    text-align: center;
+}
+
+.video-wrapper {
+    /* for YouTube iframe using 16:9 aspect ratio, i used responsive wrapper. 
+       Learning: Padding-bottom technique was new and it guarantees video scales properly. */
+    position: relative;
+    padding-bottom: 56.25%; /* 16:9 aspect ratio */
+    height: 0;
+    overflow: hidden;
+    /* to prevent oversized videos on large screens, i limited width. */
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.video-wrapper iframe {
+    /* Position iframe to fill the wrapper for responsiveness. */
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+/* Call-to-Action Banner */
+.cta-banner {
+    /* for emphasis, i used dark blue background. 
+       for the CTA, #003366 creates a strong visual contrast. */
+    background-color: #003366;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    /* for readability, i used white text. */
+    color: white;
+    margin-bottom: 40px;
+    padding: 30px 20px;
+    text-align: center;
+}
+
+.cta-banner h2 {
+    /* for contrast against the dark background, i used White  */
+    color: white;
+    margin-bottom: 15px;
+}
+
+.cta-banner p {
+    font-size: 1.1em;
+    margin-bottom: 20px;
+}
+
+.cta-button {
+    /* to match site’s accent color, i used orange background. */
+    background-color: #ff6600;
+    border-radius: 8px;
+    color: white;
+    display: inline-block;
+    font-weight: bold;
+    margin: 0 10px;
+    padding: 10px 20px;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+}
+
+.cta-button:hover {
+    /* for feedback, i used darker orange on hover. */
+    background-color: #e65c00;
+}
+
+/* ============================= */
+/* Universities Page Styles      */
+/* ============================= */
+/* Styles for universities.html, such as city lists and Group of Eight section. 
+   Decision: for clarity and easy navigation, i used a column-based layout. */
+
+/* City Universities Container */
+.city-universities-container {
+    background-color: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    margin-bottom: 40px;
+    padding: 25px;
+}
+
+.city-universities-container h2 {
+    text-align: center;
+}
+
+/* Jump Links */
+.jump-links {
+    /* for navigation links, i used light blue background. */
+    background-color: #e6f0ff;
+    border-radius: 10px;
+    /* for full-width clickable area, i used block display . */
+    display: block;
+    margin: 0 auto 20px;
+    max-width: 600px;
+    padding: 12px 20px;
+    text-align: center;
+    /* for hover effect, i used transition. */
+    transition: background-color 0.3s ease;
+}
+
+.jump-links:hover {
+    /* for feedback, i used darker blue on hover. */
+    background-color: #cce5ff;
+}
+
+.jump-links a {
+    font-weight: bold;
+    margin: 0 5px;
+}
+
+.jump-links strong {
+    font-size: 1.1em;
+}
+
+/* City Pairs */
+.city-pairs {
+    /* for a grid of city columns, i used flexbox . */
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+}
+
+.city-column {
+    /* Light blue background. */
+    background-color: #f0f7ff;
+    border: 1px solid #ddd;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    transition: box-shadow 0.3s ease, transform 0.3s ease;
+    width: 300px;
+}
+
+.city-column:hover {
+    /* for interactivity, i used hover effect. */
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
+    transform: translateY(-5px);
+}
+
+.city-column h3 {
+    color: #004080;
+    font-size: 1.3em;
+    margin-top: 0;
+}
+
+.city-column ul {
+    font-size: 1em;
+    list-style: none;
+    padding-left: 0;
+}
+
+.city-column ul li {
+    margin: 8px 0;
+}
+
+/* Eight Group List */
+.go8-heading {
+    color: #004080;
+    font-size: 2em;
+    font-weight: bold;
+    margin: 30px 0 20px;
+    text-align: center;
+}
+
+.go8-list {
+    background-color: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    list-style: none;
+    margin: 20px auto;
+    max-width: 600px;
+    padding: 20px;
+    text-align: center;
+}
+
+.go8-list li {
+    color: #333;
+    font-size: 1.1em;
+    margin: 10px 0;
+}
+
+/* ============================= */
+/* Rankings Page Styles          */
+/* ============================= */
+/* Styles for rankings.html, mainly the university rankings table. 
+   Decision: for structured data display with alternating row colors, i used a table. */
+
+table {
+    background-color: #ffffff;
+    /* for a clean table appearance, i used collapse borders. */
+    border-collapse: collapse;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    margin: 20px auto;
+    max-width: 800px;
+    /* to maintain rounded corners, i used hide overflow. */
+    overflow: hidden;
+    width: 100%;
+}
+
+thead {
+    /* for table headers, i used dark blue background. */
+    background-color: #003366;
+    color: white;
+}
+
+th, td {
+    border: 1px solid #ddd;
+    padding: 12px;
+    text-align: left;
+}
+
+th {
+    font-size: 1.1em;
+    font-weight: bold;
+}
+
+tbody tr {
+    /* for hover effect on rows, i used transition. */
+    transition: background-color 0.3s ease;
+}
+
+tbody tr:nth-child(even) {
+    /* for alternating rows to improve readability, i used light blue. */
+    background-color: #f0f7ff;
+}
+
+tbody tr:hover {
+    /* for interactivity, i used darker blue on hover. */
+    background-color: #e6f0ff;
+}
+
+/* ============================= */
+/* About Page Styles             */
+/* ============================= */
+.main-about-container {
+    /* for the main about section, i used light blue background. */
+    background-color: #e6f2ff;
+    border-radius: 15px;
+    margin: 20px;
+    padding: 20px;
+}
+
+.about-section {
+    /* for side-by-side heading and content, i used flexbox. */
+    align-items: flex-start;
+    display: flex;
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+.about-heading-box {
+    /* for heading boxes, i used light blue background. */
+    background-color: #cce5ff;
+    border-radius: 10px;
+    flex-shrink: 0;
+    font-weight: bold;
+    min-width: 160px;
+    padding: 10px 15px;
+    font-size: 15px; /*set the font size to 15px*/
+}
+
+.grey-box-section,
+.acknowledgements-box-section {
+    /* for secondary sections, i used grey background. */
+    background-color: #f0f0f0;
+    border-radius: 15px;
+    margin: 30px 20px;
+    padding: 20px;
+}
+
+.acknowledgements-box-section {
+    /* for distinction, i used slightly darker grey. */
+    background-color: #e8e8e8;
+}
+
+/* ============================= */
+/* Contact Page Styles           */
+/* ============================= */
+/* Styles for contact.html, such as contact info, social media, and map. 
+   Learning: Embedding a Google Map needed learning iframe responsiveness. */
+
+.contact-image-container {
+    margin: 20px auto;
+    max-width: 600px;
+    text-align: center;
+}
+
+.contact-image-container img {
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    height: auto;
+    width: 100%;
+}
+
+.contact-section {
+    background-color: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    margin-bottom: 40px;
+    padding: 20px;
+    text-align: center;
+}
+
+.rounded-title {
+    /* for section titles, i used light blue background. */
+    background-color: #e6f0ff;
+    border-radius: 15px;
+    color: #004080;
+    display: inline-block;
+    font-size: 1.6em;
+    font-weight: bold;
+    margin-bottom: 20px;
+    padding: 12px 30px;
+}
+
+.dark-blue-box {
+    /* for contact and social media info, i used dark blue background. */
+    background-color: #003366;
+    border-radius: 15px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+    color: white;
+    margin: 0 auto;
+    max-width: 600px;
+    padding: 25px;
+    text-align: center;
+}
+
+.dark-blue-box p {
+    font-size: 1.1em;
+    margin-bottom: 15px;
+}
+
+.dark-blue-box ul {
+    list-style: none;
+    padding-left: 0;
+}
+
+.dark-blue-box ul li {
+    font-size: 1.05em;
+    margin: 10px 0;
+}
+
+.dark-blue-box a {
+    /* for links in dark boxes, i used light blue . */
+    color: #a3c1f7;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.dark-blue-box a:hover,
+.dark-blue-box a:focus {
+    /* for clarity, i used white on hover/focus. */
+    color: #ffffff;
+    text-decoration: underline;
+}
+
+/* The Section of Contact Map  */
+.contact-map {
+    /* for the map section, i used white background. */
+    background: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    margin: 20px 0;
+    padding: 20px;
+    text-align: center;
+}
+
+.map-wrapper {
+    /* for Google Map iframe, i used responsive wrapper. 
+       Decision: for consistency, i used same 16:9 aspect ratio as video. */
+    position: relative;
+    padding-bottom: 56.25%; /* 16:9 aspect ratio */
+    height: 0;
+    overflow: hidden;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.map-wrapper iframe {
+    /* Position iframe to fill wrapper for responsiveness. */
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: 0;
+}
+
+hr {
+    /* for visual separation, i used styled divider. */
+    border: 0;
+    border-top: 1px solid #ddd;
+    margin: 30px 0;
+}
+
+/* ============================= */
+/* City Pages Styles             */
+/* Melbourne, etc.              */
+ /* ============================= */
+/* Styles for city-specific pages such as melbourne.html. 
+   Decision: Alternating layouts for visual variety and university listings. */
+
+.city-top-image {
+    border-radius: 12px;
+    margin-bottom: 25px;
+    max-height: 350px;
+}
+
+.city-main-heading {
+    color: #004080;
+    font-size: 2.5em;
+    font-weight: bold;
+    margin-bottom: 40px;
+    text-align: center;
+}
+
+.university-listing {
+    /* for side-by-side image and text, i used flexbox . */
+    align-items: center;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 25px;
+    margin-bottom: 60px;
+}
+
+.university-image {
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    flex-shrink: 0;
+    width: 350px;
+}
+
+.university-text {
+    color: #333;
+    font-size: 1.1em;
+    width: 50%;
+}
+
+.university-listing:nth-child(even) {
+    /* for alternating layout, i used reverse order. */
+    flex-direction: row-reverse;
+}
+
+/* ============================= */
+/* Footer Section                */
+/* This used in all pages             */
+/* ============================= */
+/* for the site footer, i used footer styles. 
+   Learning: Fixed an earlier problem where text color wasn’t applying due to missing specificity. */
+    footer {
+    /* for footer to match accent color, i used orange background . */
+    background-color: #ff6600;
+    border-radius: 12px 12px 0 0;
+    color: white;
+    margin-top: 40px;
+    padding: 20px 10px;
+    text-align: center;
+}
+
+footer p {
+    font-size: 0.95em;
+    margin: 0;
+}
+
+/* ============================= */
+/* Header Background Images      */
+/* Page-specific backgrounds     */
+/* ============================= */
+/* to headers based on page class, i assigned background images. 
+   Decision: Unique images per page improve visual distinction. */
+
+body.home header {
+    background-image: url('images/sydney harbour.jpg');
+}
+
+body.universities header,
+body.about header {
+    background-image: url('images/sydney harbour.jpg');
+}
+
+body.contact header {
+    background-image: url('images/Contact.png');
+}
+
+body.melbourne header {
+    background-image: url('images/Melbourne.jpg');
+}
+
+body.sydney header {
+    background-image: url('images/Sydney.jpeg');
+}
+
+body.brisbane header {
+    background-image: url('images/Brisbane.jpg');
+}
+
+body.canberra header {
+    background-image: url('images/Canberra.jpg');
+}
+
+body.adelaide header {
+    background-image: url('images/Adelaide.jpg');
+}
+
+body.perth header {
+    background-image: url('images/Perth.jpg');
+}
+
+body.hobart header {
+    background-image: url('images/horbart.png');
+}
+
+body.darwin header {
+    background-image: url('images/Darwin.jpg');
+}
+
+/* ============================= */
+/* Responsive Adjustments        */
+/* ============================= */
+/* for responsive design, i used media queries. 
+   Learning: Testing on several devices helped refine breakpoints at 900px, 768px, and 480px. */
+
+@media (max-width: 900px) {
+    .university-listing {
+        /* Stack content vertically on smaller screens. */
+        flex-direction: column !important;
+    }
+
+    .university-image,
+    .university-text {
+        width: 100%;
+    }
+
+    .university-text {
+        margin-top: 15px;
+    }
+
+    .australia-content {
+        /* used stack image and text on mobile. */
+        align-items: center;
+        flex-direction: column;
+    }
+
+    .australia-image {
+        max-width: 400px;
+        width: 100%;
+    }
+}
+
+@media (max-width: 768px) {
+    .city-card,
+    .uni-card {
+        /* used two cards per row on tablets. */
+        flex: 1 1 calc(50% - 20px);
+    }
+
+    nav ul {
+        /* Stack nav items vertically. */
+        flex-direction: column;
+    }
+
+    nav ul li {
+        margin: 10px 0;
+    }
+
+    .city-column {
+        width: 100%;
+    }
+
+    header {
+        /* for smaller screens, i reduced header height. */
+        min-height: 300px;
+    }
+
+    header h1 {
+        font-size: 2em;
+    }
+}
+
+@media (max-width: 480px) {
+    .city-card,
+    .uni-card,
+    .testimonial-card {
+        /*  used one card per row on mobile. */
+        flex: 1 1 100%;
+        width: 100%;
+    }
+
+    header h1 {
+        font-size: 1.6em;
+    }
+
+    main h2 {
+        font-size: 1.4em;
+    }
+
+    .jump-links {
+        display: block;
+        text-align: center;
+    }
+}
